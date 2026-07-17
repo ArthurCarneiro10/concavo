@@ -15,7 +15,7 @@
 <meta property="og:title" content="Côncavo Arquitetura — Arquitetura que abraça o espaço | Santos/SP" />
 <meta property="og:description" content="Escritório de arquitetura e interiores de alto padrão em Santos/SP. Projeto de interiores, arquitetura residencial, reforma, marcenaria e renderização 3D." />
 <meta property="og:url" content="https://concavoarquitetura.com/index.html" />
-<meta property="og:image" content="https://concavoarquitetura.com/proj-cap-ferrat.webp" />
+<meta property="og:image" content="https://concavoarquitetura.com/golden--living-1.webp" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -194,33 +194,41 @@ body.hm{background:var(--paper);position:relative}
 .svc-card.hi h3{color:var(--paper)}
 .svc-card.hi p{color:var(--taupe-light)}
 
-/* ---------------- PROJETOS (padrão "feature" da referência) ---------------- */
-.pj{padding:clamp(70px,10vh,110px) 0}
-.pj-head{display:flex;flex-direction:column;gap:22px;margin-bottom:clamp(40px,6vh,70px)}
-@media(min-width:768px){.pj-head{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:32px}}
-.pj-head .eb{display:flex;align-items:center;gap:12px;color:var(--taupe);margin-bottom:14px}
-.pj-head .eb b{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500}
-.pj-head .eb .r{width:44px;height:1px;background:var(--taupe-light)}
-.pj-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.8rem,4.2vw,3rem);
-  line-height:1.02;letter-spacing:-.015em}
-.pj-head p{font-size:14px;color:var(--taupe);max-width:44ch;line-height:1.75}
-.pj-grid{display:grid;grid-template-columns:1fr;gap:32px}
-@media(min-width:768px){
-  .pj-grid{grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,60px)}
-  .pj-grid > a:nth-child(2){margin-top:clamp(50px,9vw,96px)}
-}
-.pj-item{display:block}
-.pj-item .ph{aspect-ratio:4/5;overflow:hidden;margin-bottom:22px;box-shadow:0 12px 30px -10px rgba(28,28,28,.3)}
-.pj-item .ph picture{display:block;width:100%;height:100%}
-.pj-item .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
-@media(hover:hover){.pj-item:hover .ph img{transform:scale(1.05)}}
-.pj-item .tg{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);
-  font-weight:600;margin-bottom:7px;display:block}
-.pj-item h3{font-family:var(--font-display);font-weight:400;font-size:1.18rem;margin-bottom:9px;
-  transition:color .3s}
-.pj-item:hover h3{color:var(--blue)}
-.pj-item p{font-size:13.5px;color:var(--taupe);line-height:1.7;max-width:38ch}
-.pj-more{margin-top:clamp(50px,8vh,86px);display:flex;justify-content:center}
+/* ---------------- PORTFÓLIO (design anterior: destaque + grade) ---------------- */
+.pf{padding:clamp(80px,12vh,130px) 0}
+.pf-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+.pf-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.9rem,4.6vw,3.4rem);
+  line-height:1.04;letter-spacing:-.012em}
+.pf-head p{color:var(--taupe);max-width:34ch;font-size:15px;margin-top:14px}
+
+.pf-hero{display:block;position:relative;overflow:hidden;border-radius:3px;margin-bottom:16px}
+.pf-hero picture{display:block}
+.pf-hero picture,.pf-hero img{width:100%;height:clamp(340px,64vh,620px);object-fit:cover}
+.pf-hero img{transition:transform 1.4s var(--ease-out)}
+@media(hover:hover){.pf-hero:hover img{transform:scale(1.045)}}
+.pf-hero .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,28,28,.72),transparent 52%);
+  display:flex;align-items:flex-end;padding:clamp(20px,3vw,36px)}
+.pf-hero .ov .tag{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--blue-soft);font-weight:600}
+.pf-hero .ov h3{font-family:var(--font-display);font-weight:300;font-size:clamp(1.6rem,3.4vw,2.6rem);
+  color:#fff;line-height:1.1;margin-top:8px}
+.pf-hero .ov .loc{color:rgba(241,240,236,.72);font-size:13.5px;margin-top:6px}
+.pf-hero .go{margin-left:auto;flex:none;align-self:flex-end;display:inline-flex;align-items:center;gap:8px;
+  color:#fff;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:5px}
+
+.pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.pf-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.pf-grid{grid-template-columns:1fr}}
+.pf-card{display:block;position:relative;overflow:hidden;border-radius:3px;background:var(--hair)}
+.pf-card picture{display:block}
+.pf-card picture,.pf-card img{width:100%;height:clamp(230px,34vh,320px);object-fit:cover}
+.pf-card img{transition:transform 1.3s var(--ease-out)}
+@media(hover:hover){.pf-card:hover img{transform:scale(1.06)}}
+.pf-card .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,28,28,.76),transparent 58%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:18px}
+.pf-card .ov .tag{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-soft);font-weight:600}
+.pf-card .ov h3{font-family:var(--font-display);font-weight:300;font-size:1.15rem;color:#fff;margin-top:5px;line-height:1.2}
+.pf-more{margin-top:40px;display:flex;justify-content:center}
 
 /* ---------------- QUEM ASSINA ---------------- */
 .assina{padding:clamp(80px,12vh,140px) 0}
@@ -288,36 +296,31 @@ body.hm{background:var(--paper);position:relative}
 
     <div class="el clip tr-down" id="el-tr">
       <div class="inner">
-        <picture><source srcset="proj-cap-ferrat.webp" type="image/webp">
-          <img src="proj-cap-ferrat.jpg" alt="Suíte do Projeto Cap Ferrat" width="1200" height="930" loading="lazy" decoding="async"></picture>
+        <img src="michelangelo--living-1.webp" alt="Living do Projeto Michelangelo" width="1500" height="1500" loading="lazy" decoding="async" sizes="60vw">
       </div><span class="veil"></span>
     </div>
 
     <div class="el clip" id="el-center">
       <div class="inner">
-        <picture><source srcset="proj-sala-lareira.webp" type="image/webp">
-          <img src="proj-sala-lareira.jpg" alt="Sala com lareira em mármore verde e madeira" width="781" height="1200" decoding="async"></picture>
+        <img src="golden--living-1.webp" alt="Living do Projeto Golden" width="1500" height="1500" decoding="async" sizes="60vw">
       </div>
     </div>
 
     <div class="el clip" id="el-bl">
       <div class="inner">
-        <picture><source srcset="proj-estacao-cafe.webp" type="image/webp">
-          <img src="proj-estacao-cafe.jpg" alt="Estação de café — marcenaria autoral" width="740" height="1200" loading="lazy" decoding="async"></picture>
+        <img src="cap-ferrat--suite-1.webp" alt="Suíte do Projeto Cap Ferrat" width="1200" height="1500" loading="lazy" decoding="async" sizes="60vw">
       </div>
     </div>
 
     <div class="el clip tr-side" id="el-mr">
       <div class="inner">
-        <picture><source srcset="proj-castell-maria.webp" type="image/webp">
-          <img src="proj-castell-maria.jpg" alt="Cozinha integrada do Projeto Castell de Maria" width="1200" height="948" loading="lazy" decoding="async"></picture>
+        <img src="castell-de-maria--cozinha-1.webp" alt="Cozinha integrada do Projeto Castell de Maria" width="1200" height="1500" loading="lazy" decoding="async" sizes="60vw">
       </div>
     </div>
 
     <div class="el clip" id="el-br">
       <div class="inner">
-        <picture><source srcset="proj-cozinha-marmore.webp" type="image/webp">
-          <img src="proj-cozinha-marmore.jpg" alt="Cozinha em mármore Nero com marcenaria clara" width="700" height="1200" loading="lazy" decoding="async"></picture>
+        <img src="aruba--cozinha-1.webp" alt="Cozinha do Projeto Aruba" width="1200" height="1500" loading="lazy" decoding="async" sizes="60vw">
       </div>
     </div>
 
@@ -344,8 +347,7 @@ body.hm{background:var(--paper);position:relative}
       <div class="head">
         <div class="thumb clip">
           <div class="inner">
-            <picture><source srcset="proj-lavabo-travertino.webp" type="image/webp">
-              <img src="proj-lavabo-travertino.jpg" alt="Lavabo em travertino" width="700" height="1200" loading="lazy" decoding="async"></picture>
+            <img src="morada-de-faro--suite-1.webp" alt="Suíte do Projeto Morada de Faro" width="1200" height="1500" loading="lazy" decoding="async">
           </div>
         </div>
         <p class="desc">Ambientes de alto padrão desenhados a partir de quem vai habitar — não do catálogo.</p>
@@ -408,86 +410,6 @@ body.hm{background:var(--paper);position:relative}
   </div>
 </section>
 
-<!-- PROJETOS -->
-<div id="projetos">
-  <section class="pj">
-    <div class="wrapx">
-      <div class="pj-head reveal">
-        <div>
-          <div class="eb"><b>Interiores</b><span class="r"></span></div>
-          <h2>Suítes<br>e living</h2>
-        </div>
-        <p>Cada ambiente começa pelo corpo em repouso: alturas, alcances e a luz que se aceita ao acordar. O desenho responde à rotina real de quem vive o espaço.</p>
-      </div>
-      <div class="pj-grid">
-          <a class="pj-item reveal" href="projeto-cap-ferrat.html">
-            <div class="ph"><picture><source srcset="proj-cap-ferrat.webp" type="image/webp"><img src="proj-cap-ferrat.jpg" alt="Projeto Cap Ferrat" class="" width="1200" height="930" loading="lazy" decoding="async"></picture></div>
-            <span class="tg">Suíte · Residencial</span>
-            <h3>Projeto Cap Ferrat</h3>
-            <p>Uma suíte que se fecha para o mundo e se abre para quem dorme.</p>
-          </a>
-          <a class="pj-item reveal" href="projeto-sala-lareira.html">
-            <div class="ph"><picture><source srcset="proj-sala-lareira.webp" type="image/webp"><img src="proj-sala-lareira.jpg" alt="Sala com lareira" class="" width="781" height="1200" loading="lazy" decoding="async"></picture></div>
-            <span class="tg">Living</span>
-            <h3>Sala com lareira</h3>
-            <p>Mármore verde e madeira decidindo onde a casa se reúne.</p>
-          </a>
-      </div>
-    </div>
-  </section>
-  <section class="pj">
-    <div class="wrapx">
-      <div class="pj-head reveal">
-        <div>
-          <div class="eb"><b>Cozinhas</b><span class="r"></span></div>
-          <h2>Cozinha<br>integrada</h2>
-        </div>
-        <p>A cozinha deixa de ser um cômodo e vira o centro da casa. Integrar não é derrubar paredes — é desenhar o convívio.</p>
-      </div>
-      <div class="pj-grid">
-          <a class="pj-item reveal" href="projeto-castell-maria.html">
-            <div class="ph"><picture><source srcset="proj-castell-maria.webp" type="image/webp"><img src="proj-castell-maria.jpg" alt="Projeto Castell de Maria" class="" width="1200" height="948" loading="lazy" decoding="async"></picture></div>
-            <span class="tg">Cozinha integrada</span>
-            <h3>Projeto Castell de Maria</h3>
-            <p>A cozinha vira centro da casa — e a lavanderia some no desenho.</p>
-          </a>
-          <a class="pj-item reveal" href="projeto-cozinha-marmore.html">
-            <div class="ph"><picture><source srcset="proj-cozinha-marmore.webp" type="image/webp"><img src="proj-cozinha-marmore.jpg" alt="Cozinha em mármore" class="" width="700" height="1200" loading="lazy" decoding="async"></picture></div>
-            <span class="tg">Cozinha</span>
-            <h3>Cozinha em mármore</h3>
-            <p>Nero e marcenaria clara: contraste que não grita.</p>
-          </a>
-      </div>
-    </div>
-  </section>
-  <section class="pj">
-    <div class="wrapx">
-      <div class="pj-head reveal">
-        <div>
-          <div class="eb"><b>Marcenaria &amp; banho</b><span class="r"></span></div>
-          <h2>Detalhe<br>e matéria</h2>
-        </div>
-        <p>Marcenaria pensada como mobiliário de autor e superfícies que respondem à mão. É no detalhe que o projeto se prova.</p>
-      </div>
-      <div class="pj-grid">
-          <a class="pj-item reveal" href="projeto-estacao-cafe.html">
-            <div class="ph"><picture><source srcset="proj-estacao-cafe.webp" type="image/webp"><img src="proj-estacao-cafe.jpg" alt="Estação de café" class="" width="740" height="1200" loading="lazy" decoding="async"></picture></div>
-            <span class="tg">Marcenaria</span>
-            <h3>Estação de café</h3>
-            <p>Um nicho autoral para o gesto que abre o dia.</p>
-          </a>
-          <a class="pj-item reveal" href="projeto-suite-master.html">
-            <div class="ph"><picture><source srcset="proj-suite-master.webp" type="image/webp"><img src="proj-suite-master.jpg" alt="Suíte master" class="" width="700" height="1200" loading="lazy" decoding="async"></picture></div>
-            <span class="tg">Banho</span>
-            <h3>Suíte master</h3>
-            <p>Pedra de um lado, vidro do outro, luz atravessando os dois.</p>
-          </a>
-      </div>
-    </div>
-  </section>
-  <div class="pj-more reveal"><a href="portfolio.html" class="btn btn-primary">Ver o portfólio completo</a></div>
-</div>
-
 <!-- QUEM ASSINA -->
 <section class="assina" id="assina">
   <div class="wrapx assina-grid">
@@ -512,6 +434,59 @@ body.hm{background:var(--paper);position:relative}
       </div>
       <span class="shots-cap">João Vitor Coimbra C. de Sá · Côncavo Arquitetura</span>
     </div>
+  </div>
+</section>
+
+<!-- PORTFÓLIO (design anterior) -->
+<section class="pf" id="projetos">
+  <div class="wrapx">
+    <div class="pf-head reveal">
+      <div class="l">
+        <h2>Projetos<br>selecionados</h2>
+      </div>
+      <p>Ambientes autorais de alto padrão. Abra um projeto para percorrê-lo por dentro.</p>
+    </div>
+
+    <a class="pf-hero reveal" href="projeto-golden.html">
+      <img src="golden--living-1.webp" alt="Projeto Golden" width="1500" height="1500" decoding="async" sizes="100vw">
+      <span class="ov">
+        <span>
+          <span class="tag">Apartamento completo</span>
+          <h3>Projeto Golden</h3>
+          <span class="loc">Living, cozinha, quatro suítes e closet</span>
+        </span>
+        <span class="go">Percorrer <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </span>
+    </a>
+
+    <div class="pf-grid">
+        <a class="pf-card reveal" href="projeto-michelangelo.html">
+          <img src="michelangelo--living-1.webp" alt="Projeto Michelangelo" width="1500" height="1500" loading="lazy" decoding="async">
+          <span class="ov"><span class="tag">Living</span><h3>Projeto Michelangelo</h3></span>
+        </a>
+        <a class="pf-card reveal" href="projeto-cap-ferrat.html">
+          <img src="cap-ferrat--suite-1.webp" alt="Projeto Cap Ferrat" width="1200" height="1500" loading="lazy" decoding="async">
+          <span class="ov"><span class="tag">Suíte &amp; banho</span><h3>Projeto Cap Ferrat</h3></span>
+        </a>
+        <a class="pf-card reveal" href="projeto-morada-de-faro.html">
+          <img src="morada-de-faro--suite-1.webp" alt="Projeto Morada de Faro" width="1200" height="1500" loading="lazy" decoding="async">
+          <span class="ov"><span class="tag">Suíte &amp; banho</span><h3>Projeto Morada de Faro</h3></span>
+        </a>
+        <a class="pf-card reveal" href="projeto-castell-de-maria.html">
+          <img src="castell-de-maria--cozinha-1.webp" alt="Projeto Castell de Maria" width="1200" height="1500" loading="lazy" decoding="async">
+          <span class="ov"><span class="tag">Cozinha integrada</span><h3>Projeto Castell de Maria</h3></span>
+        </a>
+        <a class="pf-card reveal" href="projeto-cereja.html">
+          <img src="cereja--cozinha-1.webp" alt="Projeto Cereja" width="1200" height="1500" loading="lazy" decoding="async">
+          <span class="ov"><span class="tag">Cozinha &amp; banho</span><h3>Projeto Cereja</h3></span>
+        </a>
+        <a class="pf-card reveal" href="projeto-aruba.html">
+          <img src="aruba--cozinha-1.webp" alt="Projeto Aruba" width="1200" height="1500" loading="lazy" decoding="async">
+          <span class="ov"><span class="tag">Cozinha</span><h3>Projeto Aruba</h3></span>
+        </a>
+    </div>
+
+    <div class="pf-more reveal"><a href="portfolio.html" class="btn btn-ghost">Ver o portfólio completo (10 projetos)</a></div>
   </div>
 </section>
 
