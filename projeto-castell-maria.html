@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Projeto Castell de Maria — Côncavo Arquitetura</title>
+<meta name="description" content="Projeto Castell de Maria · Cozinha integrada. A cozinha vira centro da casa — e a lavanderia some no desenho. Projeto autoral da Côncavo Arquitetura, Santos/SP." />
+<meta name="author" content="Côncavo Arquitetura" />
+<meta name="theme-color" content="#F1F0EC" />
+<link rel="canonical" href="https://concavoarquitetura.com/projeto-castell-maria.html" />
+<link rel="icon" type="image/png" href="assets/logo-sym.png">
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:site_name" content="Côncavo Arquitetura" />
+<meta property="og:title" content="Projeto Castell de Maria — Côncavo Arquitetura" />
+<meta property="og:description" content="Projeto Castell de Maria · Cozinha integrada. A cozinha vira centro da casa — e a lavanderia some no desenho. Projeto autoral da Côncavo Arquitetura, Santos/SP." />
+<meta property="og:url" content="https://concavoarquitetura.com/projeto-castell-maria.html" />
+<meta property="og:image" content="https://concavoarquitetura.com/assets/proj-castell-maria.webp" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"></noscript>
+<link rel="stylesheet" href="assets/site.css" />
+<style>
+/* ============ PROJETO — percurso cinematográfico ============ */
+body.pj{background:var(--paper)}
+
+.loader{position:fixed;inset:0;z-index:200;background:var(--ink);display:grid;place-items:center;transition:opacity .8s}
+.loader.done{opacity:0;pointer-events:none}
+.loader .mk{font-family:var(--font-display);font-weight:300;font-size:1.3rem;letter-spacing:.6em;color:var(--paper);padding-left:.6em}
+.loader .bar{position:absolute;bottom:16%;left:50%;transform:translateX(-50%);width:130px;height:1px;background:rgba(241,240,236,.16);overflow:hidden}
+.loader .bar i{display:block;height:100%;width:0;background:var(--blue);transition:width .3s}
+
+/* ---- o percurso ---- */
+.fly{position:relative;height:420vh;background:var(--ink)}
+.fly-pin{position:sticky;top:0;height:100svh;overflow:hidden}
+.fly-media{position:absolute;inset:0;will-change:transform}
+.fly-media picture,.fly-media img{width:100%;height:100%;object-fit:cover}
+.fly-pin::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(24,24,24,.42),transparent 28%,transparent 52%,rgba(24,24,24,.78))}
+
+.fly-title{position:absolute;left:var(--pad);bottom:14vh;z-index:6;color:#fff;max-width:22ch;will-change:transform,opacity}
+.fly-title .k{display:block;font-family:var(--font-sans);font-weight:600;font-size:.68rem;letter-spacing:.42em;
+  text-transform:uppercase;color:var(--blue-soft);margin-bottom:1rem;padding-left:.3em;
+  text-shadow:0 1px 3px rgba(0,0,0,.7)}
+.fly-title .b{font-family:var(--font-display);font-weight:300;font-size:clamp(2.4rem,6.6vw,5.4rem);line-height:.98;
+  letter-spacing:-.015em;text-shadow:0 2px 24px rgba(0,0,0,.4)}
+
+.cap{position:absolute;left:var(--pad);bottom:14vh;z-index:5;color:#fff;max-width:26ch;opacity:0;will-change:transform,opacity}
+.cap p{font-family:var(--font-display);font-weight:300;font-size:clamp(1.5rem,3.1vw,2.6rem);line-height:1.12;
+  text-shadow:0 2px 20px rgba(0,0,0,.5)}
+
+.scrollcue{position:absolute;left:50%;bottom:4vh;transform:translateX(-50%);z-index:7;
+  color:rgba(255,255,255,.72);font-size:.55rem;letter-spacing:.36em;text-transform:uppercase;
+  display:flex;flex-direction:column;align-items:center;gap:.55rem;will-change:opacity}
+.scrollcue .ln{width:1px;height:38px;background:linear-gradient(var(--blue-soft),transparent)}
+
+/* ---- manifesto ---- */
+.pj-manifesto{background:var(--paper);text-align:center;padding:clamp(80px,15vh,150px) var(--pad)}
+.pj-manifesto .big{font-family:var(--font-display);font-weight:300;font-size:clamp(1.7rem,4.6vw,3.5rem);
+  line-height:1.14;max-width:19ch;margin:1.4rem auto 0;letter-spacing:-.012em}
+.pj-manifesto .big em{font-style:italic;color:var(--brown)}
+
+/* ---- material ---- */
+.pj-material{background:var(--paper-2);padding:clamp(70px,12vh,120px) 0}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,5vw,64px);align-items:center}
+.split .media{overflow:hidden;border-radius:3px}
+.split .media img{width:100%;height:clamp(380px,66vh,660px);object-fit:cover}
+.split .copy h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.6rem,3.4vw,2.6rem);
+  line-height:1.08;margin:.9rem 0 1.1rem}
+.split .copy p{color:var(--taupe);max-width:44ch;margin-bottom:1rem;font-size:15.5px;line-height:1.75}
+.ficha{margin-top:2rem;border-top:1px solid var(--hair);padding-top:1.5rem;display:grid;gap:.9rem}
+.ficha .row{display:grid;grid-template-columns:130px 1fr;gap:16px;align-items:baseline}
+.ficha .l{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe);font-weight:600}
+.ficha .v{font-size:14.5px;color:var(--ink)}
+@media(max-width:820px){
+  .split{grid-template-columns:1fr;gap:24px}
+  .split .media img{height:52vh}
+  .ficha .row{grid-template-columns:1fr;gap:2px}
+}
+
+/* ---- outros ---- */
+.pj-outros{background:var(--paper);padding:clamp(70px,12vh,120px) 0}
+.pj-outros .hd{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;margin-bottom:34px}
+.pj-outros h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.5rem,3vw,2.2rem)}
+.pj-outros .all{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);
+  border-bottom:1px solid var(--hair);padding-bottom:5px;transition:color .25s,border-color .25s}
+.pj-outros .all:hover{color:var(--ink);border-color:var(--ink)}
+.o-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:900px){.o-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.o-grid{grid-template-columns:1fr}}
+.o-card{position:relative;overflow:hidden;border-radius:3px;display:block;background:var(--hair)}
+.o-card img{width:100%;height:230px;object-fit:cover;transition:transform 1.2s var(--ease-out)}
+@media(hover:hover){.o-card:hover img{transform:scale(1.07)}}
+.o-card .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,28,28,.8),transparent 60%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:16px}
+.o-card .tag{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue-soft);font-weight:600}
+.o-card h3{font-family:var(--font-display);font-weight:300;font-size:1.05rem;color:#fff;margin-top:4px}
+
+/* ---- chamada ---- */
+.pj-cta{background:var(--ink);color:var(--paper);text-align:center;padding:clamp(80px,14vh,140px) var(--pad)}
+.pj-cta h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:1.08;margin:1rem 0}
+.pj-cta h2 em{font-style:italic;color:var(--blue-soft)}
+.pj-cta p{max-width:44ch;margin:0 auto 2rem;color:var(--taupe-light);font-size:15.5px}
+.pj-cta .eyebrow{color:var(--blue-soft)}
+
+@media (prefers-reduced-motion:reduce){
+  .fly{height:100svh}
+  .fly-pin{position:relative}
+  .fly-title{opacity:1!important;transform:none!important}
+  .cap,.scrollcue{display:none}
+  .fly-media{transform:none!important}
+}
+</style>
+</head>
+<body class="pj">
+<div class="loader" id="loader"><div class="mk">CÔNCAVO</div><div class="bar"><i id="lbar"></i></div></div>
+
+<header class="top on-dark">
+  <a class="mark" href="index.html" aria-label="Côncavo Arquitetura — início">
+    <img class="sym" src="assets/logo-sym.webp" alt="" width="101" height="84" />
+    <img class="wm" src="assets/logo-wordmark.webp" alt="Côncavo Arquitetura" width="727" height="120" />
+  </a>
+  <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+    <i></i><i></i><i></i>
+  </button>
+</header>
+<div class="menu" id="menu">
+  <nav>
+    <a href="index.html"><span class="n">01</span>Início</a>
+    <a href="portfolio.html" aria-current="page"><span class="n">02</span>Portfólio</a>
+    <a href="orcamento.html"><span class="n">03</span>Orçamento</a>
+  </nav>
+  <div class="m-foot">
+    <a href="https://wa.me/5513981683130?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20projeto." target="_blank" rel="noopener">WhatsApp (13) 98168-3130</a>
+    <a href="https://www.instagram.com/concavoarquitetura" target="_blank" rel="noopener">@concavoarquitetura</a>
+    <a href="mailto:contato@concavoarquitetura.com">contato@concavoarquitetura.com</a>
+    <span>Rua Quintino Bocaiúva, 3 · Gonzaga · Santos/SP</span>
+  </div>
+</div>
+
+<!-- PERCURSO -->
+<section class="fly" id="fly" data-dark>
+  <div class="fly-pin">
+    <div class="fly-media" id="flyMedia">
+      <picture><source srcset="assets/proj-castell-maria.webp" type="image/webp"><img src="assets/proj-castell-maria.jpg" alt="Projeto Castell de Maria" class="" width="1200" height="948" decoding="async" sizes="100vw"></picture>
+    </div>
+    <h1 class="fly-title" id="flyTitle">
+      <span class="k">Côncavo · Cozinha integrada</span>
+      <span class="b">Projeto Castell de Maria</span>
+    </h1>
+    <div class="cap" data-cap="0"><p>A cozinha deixa de ser um cômodo.</p></div>
+    <div class="cap" data-cap="1"><p>Vira o centro da casa.</p></div>
+    <div class="cap" data-cap="2"><p>E a lavanderia some no desenho.</p></div>
+    <div class="scrollcue" id="cue"><span>Role</span><span class="ln"></span></div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="pj-manifesto">
+  <span class="eyebrow reveal">O projeto</span>
+  <p class="big reveal">Integrar não é derrubar paredes.<br>É desenhar o <em>convívio</em>.</p>
+</section>
+
+<!-- MATERIAL -->
+<section class="pj-material">
+  <div class="wrap split">
+    <div class="media reveal"><picture><source srcset="assets/proj-castell-maria.webp" type="image/webp"><img src="assets/proj-castell-maria.jpg" alt="Projeto Castell de Maria — detalhe" class="" width="1200" height="948" loading="lazy" decoding="async"></picture></div>
+    <div class="copy">
+      <span class="eyebrow reveal">Matéria</span>
+      <h2 class="reveal">Cozinha + lavanderia.</h2>
+      <p class="reveal">A planta foi redesenhada a partir do uso real: quem cozinha, quem passa, quem conversa. A lavanderia entra no mesmo gesto de marcenaria e desaparece quando a casa recebe.</p>
+      <div class="ficha reveal">
+        <div class="row"><div class="l">Projeto</div><div class="v">Projeto Castell de Maria</div></div>
+        <div class="row"><div class="l">Tipo</div><div class="v">Cozinha integrada</div></div>
+        <div class="row"><div class="l">Ambiente</div><div class="v">Cozinha + lavanderia</div></div>
+        <div class="row"><div class="l">Estúdio</div><div class="v">Côncavo Arquitetura</div></div>
+        <div class="row"><div class="l">Autoria</div><div class="v">João Vitor Coimbra C. de Sá · CAU A3088768-SP</div></div>
+        <div class="row"><div class="l">Atendimento</div><div class="v">Santos e Baixada Santista · SP</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTROS -->
+<section class="pj-outros">
+  <div class="wrap">
+    <div class="hd">
+      <h2>Outros ambientes</h2>
+      <a class="all" href="portfolio.html">Ver portfólio completo</a>
+    </div>
+    <div class="o-grid">
+        <a class="o-card" href="projeto-cap-ferrat.html">
+          <picture><source srcset="assets/proj-cap-ferrat.webp" type="image/webp"><img src="assets/proj-cap-ferrat.jpg" alt="Projeto Cap Ferrat" class="" width="1200" height="930" loading="lazy" decoding="async"></picture>
+          <span class="ov"><span class="tag">Suíte · Residencial</span><h3>Projeto Cap Ferrat</h3></span>
+        </a>
+        <a class="o-card" href="projeto-estacao-cafe.html">
+          <picture><source srcset="assets/proj-estacao-cafe.webp" type="image/webp"><img src="assets/proj-estacao-cafe.jpg" alt="Estação de café" class="" width="740" height="1200" loading="lazy" decoding="async"></picture>
+          <span class="ov"><span class="tag">Marcenaria</span><h3>Estação de café</h3></span>
+        </a>
+        <a class="o-card" href="projeto-sala-lareira.html">
+          <picture><source srcset="assets/proj-sala-lareira.webp" type="image/webp"><img src="assets/proj-sala-lareira.jpg" alt="Sala com lareira" class="" width="781" height="1200" loading="lazy" decoding="async"></picture>
+          <span class="ov"><span class="tag">Living</span><h3>Sala com lareira</h3></span>
+        </a>
+        <a class="o-card" href="projeto-suite-master.html">
+          <picture><source srcset="assets/proj-suite-master.webp" type="image/webp"><img src="assets/proj-suite-master.jpg" alt="Suíte master" class="" width="700" height="1200" loading="lazy" decoding="async"></picture>
+          <span class="ov"><span class="tag">Banho</span><h3>Suíte master</h3></span>
+        </a>
+        <a class="o-card" href="projeto-cozinha-marmore.html">
+          <picture><source srcset="assets/proj-cozinha-marmore.webp" type="image/webp"><img src="assets/proj-cozinha-marmore.jpg" alt="Cozinha em mármore" class="" width="700" height="1200" loading="lazy" decoding="async"></picture>
+          <span class="ov"><span class="tag">Cozinha</span><h3>Cozinha em mármore</h3></span>
+        </a>
+        <a class="o-card" href="projeto-lavabo-travertino.html">
+          <picture><source srcset="assets/proj-lavabo-travertino.webp" type="image/webp"><img src="assets/proj-lavabo-travertino.jpg" alt="Lavabo travertino" class="" width="700" height="1200" loading="lazy" decoding="async"></picture>
+          <span class="ov"><span class="tag">Lavabo</span><h3>Lavabo travertino</h3></span>
+        </a>
+    </div>
+  </div>
+</section>
+
+<!-- CHAMADA -->
+<section class="pj-cta" data-dark>
+  <span class="eyebrow reveal">Vamos projetar</span>
+  <h2 class="reveal">Tem um espaço esperando<br>a <em>forma certa?</em></h2>
+  <p class="reveal">Conte sobre o seu projeto e receba na hora uma leitura do estúdio — sem compromisso.</p>
+  <a href="orcamento.html" class="btn btn-primary reveal" style="background:var(--paper);color:var(--ink);border-color:var(--paper)">Peça seu orçamento</a>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img class="logo-foot" src="assets/logo-foot.webp" alt="Côncavo Arquitetura" width="568" height="150" />
+        <p>Arquitetura e interiores de alto padrão. Aquilo que se curva para dentro: acolhimento, proteção, envolvimento.</p>
+        <p class="foot-addr">Rua Quintino Bocaiúva, 3 · Gonzaga · Santos/SP<br>CAU A3088768-SP · João V. C. C. de Sá</p>
+      </div>
+      <div class="foot-col">
+        <h4>Navegação</h4>
+        <a href="index.html">Início</a>
+        <a href="index.html#estudio">Estúdio</a>
+        <a href="index.html#servicos">Serviços</a>
+        <a href="portfolio.html">Portfólio</a>
+        <a href="index.html#assina">Quem assina</a>
+      </div>
+      <div class="foot-col">
+        <h4>Contato</h4>
+        <a href="orcamento.html">Peça seu orçamento</a>
+        <a href="https://wa.me/5513981683130?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20projeto." target="_blank" rel="noopener">(13) 98168-3130</a>
+        <a href="https://www.instagram.com/concavoarquitetura" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:contato@concavoarquitetura.com">contato@concavoarquitetura.com</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span data-yr></span> Côncavo Arquitetura · Santos · SP</span>
+      <span>Site por <a href="https://orbita-site-eight.vercel.app" target="_blank" rel="noopener">Órbita</a></span>
+    </div>
+  </div>
+</footer>
+<div class="island" id="island">
+  <div class="island-shell">
+    <div class="island-panel">
+      <div><div class="island-inner">
+        <div class="lbl">Fale com o estúdio</div>
+        <div class="island-links">
+          <a href="https://wa.me/5513981683130?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20projeto." target="_blank" rel="noopener">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20.5l1.8-5.3A8.4 8.4 0 1 1 21 11.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="tx"><b>WhatsApp</b><span>(13) 98168-3130 · resposta em até 1 dia útil</span></span>
+          </a>
+          <a href="https://www.instagram.com/concavoarquitetura" target="_blank" rel="noopener">
+            <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></span>
+            <span class="tx"><b>Instagram</b><span>@concavoarquitetura</span></span>
+          </a>
+          <a href="mailto:contato@concavoarquitetura.com">
+            <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="tx"><b>E-mail</b><span>contato@concavoarquitetura.com</span></span>
+          </a>
+          <a href="https://maps.google.com/?q=Rua+Quintino+Bocai%C3%BAva+3+Gonzaga+Santos+SP" target="_blank" rel="noopener">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="tx"><b>Estúdio</b><span>Rua Quintino Bocaiúva, 3 · Gonzaga · Santos/SP</span></span>
+          </a>
+        </div>
+      </div></div>
+    </div>
+    <div class="island-bar">
+      <img class="sym" src="assets/logo-sym.webp" alt="" width="101" height="84" />
+      <a class="island-cta" href="orcamento.html">
+        Peça seu orçamento
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <button class="island-toggle" aria-label="Mostrar contatos do estúdio" aria-expanded="false">
+        <svg viewBox="0 0 24 24"><path d="m6 15 6-6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+<script src="assets/site.js" defer></script>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* preloader — só imagens imediatas */
+  var loader=document.getElementById('loader'), bar=document.getElementById('lbar');
+  var imgs=[].slice.call(document.images).filter(function(i){return i.loading!=='lazy';});
+  var n=0, fin_=false;
+  function done(){ n++; if(bar) bar.style.width=Math.round(n/Math.max(1,imgs.length)*100)+'%'; if(n>=imgs.length) fin(); }
+  function fin(){ if(fin_) return; fin_=true; if(bar) bar.style.width='100%';
+    setTimeout(function(){ loader.classList.add('done'); }, 140); }
+  imgs.forEach(function(i){ i.complete?done():(i.addEventListener('load',done),i.addEventListener('error',done)); });
+  if(!imgs.length) fin();
+  setTimeout(fin, 1600);
+
+  if(reduce) return;
+
+  /* percurso: progresso do scroll com suavização */
+  var fly=document.getElementById('fly');
+  var media=document.getElementById('flyMedia');
+  var title=document.getElementById('flyTitle');
+  var cue=document.getElementById('cue');
+  var caps=[].slice.call(document.querySelectorAll('.cap'));
+  if(!fly) return;
+
+  /* janelas de cada legenda: [entra, sai] em progresso 0..1 */
+  var W=[[0.24,0.48],[0.47,0.71],[0.70,1.30]];
+  var cur=0, tgt=0;
+  var clamp=function(v,a,b){return Math.min(b,Math.max(a,v));};
+
+  function measure(){
+    var r=fly.getBoundingClientRect();
+    var total=fly.offsetHeight-innerHeight;
+    tgt=clamp(-r.top/(total||1),0,1);
+  }
+  addEventListener('scroll',measure,{passive:true});
+  addEventListener('resize',measure);
+  measure(); cur=tgt;
+
+  function fade(p,inA,outA){
+    /* sobe em 0.10 do trecho, segura, desce em 0.10 */
+    var d=outA-inA, f=Math.min(0.34,d*0.42);
+    if(p<inA||p>outA) return 0;
+    if(p<inA+f) return (p-inA)/f;
+    if(p>outA-f) return (outA-p)/f;
+    return 1;
+  }
+
+  (function frame(){
+    cur += (tgt-cur)*0.09;
+    var p=cur;
+
+    /* câmera: aproxima e sobe devagar */
+    var sc=1.04+p*0.30, ty=(-p*7);
+    media.style.transform='scale('+sc.toFixed(4)+') translate3d(0,'+ty.toFixed(2)+'%,0)';
+
+    /* título segura no início e sobe */
+    var tOut=clamp((p-0.05)/0.14,0,1);
+    title.style.opacity=(1-tOut).toFixed(3);
+    title.style.transform='translate3d(0,'+(-tOut*40).toFixed(1)+'px,0)';
+
+    if(cue) cue.style.opacity=(1-clamp(p/0.06,0,1)).toFixed(3);
+
+    for(var i=0;i<caps.length;i++){
+      var o=fade(p,W[i][0],W[i][1]);
+      caps[i].style.opacity=o.toFixed(3);
+      caps[i].style.transform='translate3d(0,'+((1-o)*22).toFixed(1)+'px,0)';
+    }
+    requestAnimationFrame(frame);
+  })();
+})();
+</script>
+</body>
+</html>
