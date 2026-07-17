@@ -8,21 +8,21 @@
 <meta name="author" content="Côncavo Arquitetura" />
 <meta name="theme-color" content="#F1F0EC" />
 <link rel="canonical" href="https://concavoarquitetura.com/orcamento.html" />
-<link rel="icon" type="image/png" href="assets/logo-sym.png">
+<link rel="icon" type="image/png" href="logo-sym.png">
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="pt_BR" />
 <meta property="og:site_name" content="Côncavo Arquitetura" />
 <meta property="og:title" content="Peça seu orçamento — Côncavo Arquitetura" />
 <meta property="og:description" content="Conte sobre o seu projeto e receba na hora uma leitura do estúdio, com o caminho recomendado e o próximo passo. Sem compromisso." />
 <meta property="og:url" content="https://concavoarquitetura.com/orcamento.html" />
-<meta property="og:image" content="https://concavoarquitetura.com/assets/proj-cap-ferrat.webp" />
+<meta property="og:image" content="https://concavoarquitetura.com/proj-cap-ferrat.webp" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"></noscript>
-<link rel="stylesheet" href="assets/site.css" />
+<link rel="stylesheet" href="site.css" />
 <style>
 body.or{background:var(--paper)}
 .or-top{padding:150px 0 12px}
@@ -94,8 +94,8 @@ body.or{background:var(--paper)}
 <body class="or">
 <header class="top">
   <a class="mark" href="index.html" aria-label="Côncavo Arquitetura — início">
-    <img class="sym" src="assets/logo-sym.webp" alt="" width="101" height="84" />
-    <img class="wm" src="assets/logo-wordmark.webp" alt="Côncavo Arquitetura" width="727" height="120" />
+    <img class="sym" src="logo-sym.webp" alt="" width="101" height="84" />
+    <img class="wm" src="logo-wordmark.webp" alt="Côncavo Arquitetura" width="727" height="120" />
   </a>
   <button class="burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
     <i></i><i></i><i></i>
@@ -163,7 +163,7 @@ body.or{background:var(--paper)}
         <p class="q-note">Análise instantânea para agilizar seu atendimento — sem compromisso.</p>
       </div>
       <div class="quote-result" id="q-result" aria-live="polite">
-        <div class="q-empty"><img src="assets/logo-sym.webp" alt=""><p>Preencha ao lado e receba na hora uma leitura do seu projeto e uma mensagem pronta para enviar ao estúdio.</p></div>
+        <div class="q-empty"><img src="logo-sym.webp" alt=""><p>Preencha ao lado e receba na hora uma leitura do seu projeto e uma mensagem pronta para enviar ao estúdio.</p></div>
       </div>
     </div>
   </div>
@@ -200,7 +200,7 @@ body.or{background:var(--paper)}
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <img class="logo-foot" src="assets/logo-foot.webp" alt="Côncavo Arquitetura" width="568" height="150" />
+        <img class="logo-foot" src="logo-foot.webp" alt="Côncavo Arquitetura" width="568" height="150" />
         <p>Arquitetura e interiores de alto padrão. Aquilo que se curva para dentro: acolhimento, proteção, envolvimento.</p>
         <p class="foot-addr">Rua Quintino Bocaiúva, 3 · Gonzaga · Santos/SP<br>CAU A3088768-SP · João V. C. C. de Sá</p>
       </div>
@@ -252,7 +252,7 @@ body.or{background:var(--paper)}
       </div></div>
     </div>
     <div class="island-bar">
-      <img class="sym" src="assets/logo-sym.webp" alt="" width="101" height="84" />
+      <img class="sym" src="logo-sym.webp" alt="" width="101" height="84" />
       <a class="island-cta" href="https://wa.me/5513981683130?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20um%20projeto.">
         Falar no WhatsApp
         <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -263,7 +263,7 @@ body.or{background:var(--paper)}
     </div>
   </div>
 </div>
-<script src="assets/site.js" defer></script>
+<script src="site.js" defer></script>
 <script>
 (function(){
   const sel={};
@@ -278,7 +278,7 @@ body.or{background:var(--paper)}
   });
   const $=function(id){return document.getElementById(id);};
   const result=$('q-result');
-  const SYM="assets/logo-sym.webp";
+  const SYM="logo-sym.webp";
   function gather(){return{nome:($('q-nome').value||'').trim(),tipo:sel.tipo||'',escopo:($('q-escopo').value||'').trim(),area:($('q-area').value||'').trim(),cidade:($('q-cidade').value||'').trim(),prazo:sel.prazo||'',faixa:sel.faixa||'',msg:($('q-msg').value||'').trim()};}
   function waLink(d){
     let t=d.nome?('Olá, Côncavo! Sou '+d.nome+' e gostaria de um orçamento.'):'Olá, Côncavo! Gostaria de um orçamento.';

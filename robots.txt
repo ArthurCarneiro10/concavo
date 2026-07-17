@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://concavoarquitetura.com/sitemap.xml
+Sitemap: https://concavo.vercel.app/sitemap.xml
