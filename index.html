@@ -24,105 +24,241 @@
 <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fahkwang:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap"></noscript>
 <link rel="stylesheet" href="site.css" />
 <style>
-/* ---------- HERO ---------- */
-.hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:132px 0 150px;overflow:hidden}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;width:100%}
-.hero h1{font-family:var(--font-display);font-weight:300;font-size:clamp(2.9rem,6.2vw,5.4rem);line-height:.98;letter-spacing:-.015em}
-.hero h1 em{font-style:italic;color:var(--brown)}
-.hero .lead{margin-top:30px;max-width:30ch;font-size:clamp(1rem,1.4vw,1.18rem);color:var(--taupe);line-height:1.55}
-.hero-eyebrow{margin-bottom:26px;display:flex;align-items:center;gap:14px}
-.hero-eyebrow .rule{height:1px;width:46px;background:var(--hair)}
-.hero-actions{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap}
+/* ================================================================
+   HOME — composição editorial (layout de referência) na marca Côncavo
+   ================================================================ */
+body.hm{background:var(--paper);position:relative}
 
-/* prato côncavo — assinatura da marca */
-.scene{position:relative;width:100%;max-width:480px;margin-left:auto;aspect-ratio:1/1.04;perspective:1200px;perspective-origin:50% 44%}
-.scene-glow{position:absolute;left:50%;top:54%;width:82%;height:82%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(96,126,154,.30),transparent 62%);filter:blur(38px);z-index:0}
-.stage{position:absolute;inset:0;transform-style:preserve-3d;z-index:1;transform:rotateX(var(--rx,21deg)) rotateY(var(--ry,-15deg)) translateZ(var(--sz,0px))}
-.core{position:absolute;left:50%;top:50%;width:46%;height:46%;border-radius:50%;transform:translate(-50%,-50%) translateZ(-300px);background:radial-gradient(circle,var(--amber-soft) 0%,var(--amber) 34%,rgba(96,126,154,.18) 60%,transparent 76%);filter:blur(6px)}
-.rim{position:absolute;inset:0;border-radius:50%;transform:translateZ(8px);pointer-events:none;background:radial-gradient(120% 120% at var(--mx,50%) var(--my,38%),rgba(222,230,238,.22),transparent 50%);box-shadow:inset 0 0 70px rgba(21,19,14,.35)}
-.ring{position:absolute;left:50%;top:50%;width:100%;height:100%;border-radius:50%;transform:translate(-50%,-50%) translateZ(var(--z)) scale(var(--s));border:1.5px solid var(--rc)}
-.scene-cap{margin-top:18px;text-align:center}
-.scene-cap .n{font-family:var(--font-display);font-size:14px;letter-spacing:.06em;display:block}
-.scene-cap .l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
-.hero-stats{position:absolute;left:0;right:0;bottom:40px;display:flex;gap:clamp(20px,4vw,46px);flex-wrap:wrap;align-items:flex-end;border-top:1px solid var(--hair);padding-top:20px}
-.stat .v{font-family:var(--font-display);font-size:clamp(1.1rem,1.7vw,1.7rem);font-weight:400;line-height:1.2}
-.stat .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);margin-top:4px}
-@media(max-width:940px){
-  .hero{padding:118px 0 120px;min-height:auto}
-  .hero-grid{grid-template-columns:1fr;gap:52px}
-  .scene{max-width:330px;margin:0 auto}
-  .hero-stats{position:static;margin-top:56px}
+/* atmosfera de fundo (substitui o canvas WebGL da referência) */
+.amb{
+  position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.62;
+  background:
+    radial-gradient(58% 48% at 18% 22%, #FAF9F6 0%, transparent 62%),
+    radial-gradient(52% 44% at 82% 68%, #E4E2DB 0%, transparent 62%),
+    radial-gradient(46% 56% at 62% 12%, #F4F3EF 0%, transparent 60%),
+    radial-gradient(60% 50% at 40% 90%, #EAE8E1 0%, transparent 64%);
+  animation:drift 30s ease-in-out infinite alternate;
+}
+@keyframes drift{
+  0%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(-1.5%,1.5%,0) scale(1.06)}
+  100%{transform:translate3d(1.5%,-1%,0) scale(1.03)}
+}
+.noise{
+  position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+/* atenção: NÃO usar ".hm header" aqui — pegaria também a barra fixa do topo */
+.hm section,.hm .hero,.hm .foot,.hm #projetos{position:relative;z-index:10}
+
+/* ---------------- HERO: composição absoluta ---------------- */
+.hero{position:relative;width:100%;height:100svh;min-height:640px;overflow:hidden}
+.scene{position:relative;width:100%;height:100%;max-width:1920px;margin:0 auto;z-index:10}
+
+/* revelação por clip-path (como na referência) */
+.clip{clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%);
+  transition:clip-path 1.5s var(--ease-out)}
+.clip.tr-down{clip-path:polygon(0% 0%,100% 0%,100% 0%,0% 0%)}
+.clip.tr-side{clip-path:polygon(0% 0%,0% 0%,0% 100%,0% 100%)}
+.go .clip{clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%)}
+.inner{width:100%;height:100%;transform:scale(1.1);transition:transform 2s var(--ease-out)}
+.go .inner{transform:scale(1)}
+.inner img{width:100%;height:100%;object-fit:cover;display:block}
+
+.el{position:absolute;overflow:hidden}
+#el-center{top:50%;left:33%;transform:translateY(-50%);width:32%;height:90%;z-index:10;
+  box-shadow:0 25px 50px -12px rgba(28,28,28,.4)}
+#el-tr{top:0;right:0;width:42%;height:60%;z-index:0}
+#el-tr .veil{position:absolute;inset:0;z-index:2;pointer-events:none;mix-blend-mode:multiply;
+  background:linear-gradient(to bottom,transparent,transparent 55%,rgba(241,240,236,.85))}
+#el-bl{bottom:10%;left:4%;width:20%;height:42%;z-index:20;box-shadow:0 25px 50px -12px rgba(28,28,28,.4)}
+#el-mr{top:42%;right:14%;width:24%;height:28%;z-index:20;border:4px solid var(--paper);
+  box-shadow:0 20px 40px -12px rgba(28,28,28,.35)}
+#el-br{bottom:0;right:0;width:22%;height:35%;z-index:0}
+
+/* texto */
+#el-text{position:absolute;top:13%;left:6%;width:30%;z-index:30}
+#el-text h1{font-family:var(--font-display);font-weight:300;color:var(--ink);
+  font-size:clamp(1.9rem,2.7vw,2.9rem);line-height:1.04;letter-spacing:-.02em;margin-bottom:20px}
+#el-text h1 em{font-style:italic;color:var(--brown)}
+#el-text .ln{display:block;overflow:hidden}
+#el-text .ln i{display:block;font-style:inherit;transform:translateY(110%);opacity:0;
+  transition:transform 1.1s var(--ease-out),opacity 1.1s var(--ease-out)}
+.go #el-text .ln i{transform:none;opacity:1}
+#el-text p{max-width:32ch}
+#el-text p .ln i{color:var(--taupe);font-size:13.5px;line-height:2;letter-spacing:.02em}
+
+/* marca inferior esquerda */
+#el-mark{position:absolute;bottom:4%;left:4%;z-index:20;display:flex;align-items:center;gap:10px;
+  opacity:0;transition:opacity 1s var(--ease-out)}
+.go #el-mark{opacity:1}
+#el-mark img{height:18px;width:auto}
+#el-mark span{font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:var(--taupe);font-weight:600}
+
+/* cartão */
+#el-card{position:absolute;bottom:6%;right:6%;width:23%;z-index:30;
+  background:rgba(255,255,255,.95);backdrop-filter:blur(6px);padding:clamp(18px,1.6vw,28px);
+  box-shadow:0 25px 50px -12px rgba(28,28,28,.35);
+  opacity:0;transform:translateY(30px);transition:opacity 1.1s var(--ease-out),transform 1.1s var(--ease-out)}
+.go #el-card{opacity:1;transform:none}
+#el-card .rule{width:32px;height:2px;background:var(--hair);margin-bottom:20px;
+  transform:scaleX(0);transform-origin:left;transition:transform 1s var(--ease-out)}
+.go #el-card .rule{transform:scaleX(1)}
+#el-card .head{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start}
+#el-card .thumb{width:40px;height:56px;flex:none;overflow:hidden;background:var(--hair)}
+#el-card .desc,#el-card ul{opacity:0;transform:translateY(8px);
+  transition:opacity .9s var(--ease-out),transform .9s var(--ease-out)}
+.go #el-card .desc,.go #el-card ul{opacity:1;transform:none}
+#el-card .desc{font-size:12px;color:var(--taupe);line-height:1.65}
+#el-card ul{list-style:none;font-size:11.5px;line-height:2;margin-bottom:22px}
+#el-card ul li{color:var(--taupe)}
+#el-card .brand{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ink);font-weight:600;
+  opacity:0;transition:opacity 1s var(--ease-out)}
+.go #el-card .brand{opacity:1}
+#el-card .brand img{height:14px;width:auto}
+
+/* atrasos — cadência da referência */
+#el-center{transition-delay:.15s} #el-center .inner{transition-delay:.15s}
+#el-tr{transition-delay:.3s}      #el-tr .inner{transition-delay:.3s}
+#el-bl{transition-delay:.45s}     #el-bl .inner{transition-delay:.45s}
+#el-text h1 .ln:nth-child(1) i{transition-delay:.75s}
+#el-text h1 .ln:nth-child(2) i{transition-delay:.83s}
+#el-text h1 .ln:nth-child(3) i{transition-delay:.91s}
+#el-text p .ln:nth-child(1) i{transition-delay:.99s}
+#el-text p .ln:nth-child(2) i{transition-delay:1.06s}
+#el-text p .ln:nth-child(3) i{transition-delay:1.13s}
+#el-mr{transition-delay:.9s}      #el-mr .inner{transition-delay:.9s}
+#el-mark{transition-delay:1.05s}
+#el-br{transition-delay:1.2s}     #el-br .inner{transition-delay:1.2s}
+#el-card{transition-delay:1.35s}
+#el-card .rule{transition-delay:1.5s}
+#el-card .thumb{transition-delay:1.58s} #el-card .thumb .inner{transition-delay:1.58s}
+#el-card .desc{transition-delay:1.7s}
+#el-card ul{transition-delay:1.78s}
+#el-card .brand{transition-delay:1.9s}
+
+/* em telas estreitas a ilha alcançaria o cartão — sobe o cartão pra passar por cima dela */
+@media(min-width:1024px) and (max-width:1120px){
+  #el-card{bottom:calc(18px + var(--dock-h) + 18px)}
 }
 
-/* ---------- seções ---------- */
-.pad{padding:clamp(84px,13vh,132px) 0;position:relative}
-.dark{background:var(--ink);color:var(--paper)}
-.sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:52px}
-.sec-head .idx{font-family:var(--font-display);font-size:13px;color:var(--blue);letter-spacing:.1em}
-.sec-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.9rem,4.2vw,3.1rem);line-height:1.06;letter-spacing:-.01em}
-.arc-deco{position:absolute;border:1.5px solid var(--hair-dark);border-radius:50%;opacity:.5;pointer-events:none;z-index:0}
-
-/* estúdio */
-.manifesto{text-align:center;overflow:hidden}
-.manifesto .big{font-family:var(--font-display);font-weight:300;font-size:clamp(1.75rem,4.6vw,3.5rem);line-height:1.14;max-width:19ch;margin:22px auto 0;letter-spacing:-.012em}
-.manifesto .big em{font-style:italic;color:var(--blue-soft)}
-.manifesto .cols{display:grid;grid-template-columns:1fr 1fr;gap:44px;max-width:840px;margin:58px auto 0;text-align:left}
-.manifesto .cols p{color:var(--taupe-light);font-size:15px;line-height:1.75}
-@media(max-width:760px){.manifesto .cols{grid-template-columns:1fr;gap:22px}}
-
-/* serviços */
-.svc-list{border-top:1px solid var(--hair)}
-.svc-row{display:grid;grid-template-columns:64px 1fr;gap:6px 30px;padding:30px 0;border-bottom:1px solid var(--hair);transition:padding-left .45s var(--ease-out)}
-.svc-row .n{font-family:var(--font-display);font-size:13px;color:var(--blue);padding-top:9px}
-.svc-row h3{font-family:var(--font-display);font-weight:400;font-size:clamp(1.15rem,2.1vw,1.5rem);line-height:1.3}
-.svc-row p{color:var(--taupe);font-size:14.5px;line-height:1.7;max-width:52ch}
-@media(hover:hover){.svc-row:hover{padding-left:14px}}
-@media(min-width:860px){
-  .svc-row{grid-template-columns:64px .85fr 1.15fr;align-items:start}
-  .svc-row p{padding-top:5px}
+/* hero no mobile: empilhado (como o fallback da referência) */
+@media(max-width:1023px){
+  .hero{height:auto;min-height:0;padding:104px 0 40px}
+  .scene{display:flex;flex-direction:column;gap:22px;padding:0 var(--pad);height:auto}
+  .el{position:static}
+  #el-tr,#el-mr,#el-br,#el-bl{display:none}
+  #el-text{position:static;width:100%;order:1}
+  #el-text h1{font-size:clamp(2rem,8vw,2.8rem)}
+  #el-center{width:100%;height:56vh;order:2;transform:none}
+  #el-card{position:static;width:100%;order:3;transform:none}
+  .go #el-card{transform:none}
+  #el-mark{position:static;order:4;margin-top:2px}
 }
 
-/* projetos — foco do site */
-.pf-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:44px}
-.pf-head .l .idx{font-family:var(--font-display);font-size:13px;color:var(--blue);letter-spacing:.1em;display:block;margin-bottom:12px}
-.pf-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.9rem,4.6vw,3.4rem);line-height:1.04;letter-spacing:-.012em}
-.pf-head p{color:var(--taupe);max-width:34ch;font-size:15px;margin-top:14px}
+/* ---------------- ESTÚDIO ---------------- */
+.estudio{background:var(--ink);color:var(--paper);padding:clamp(90px,18vh,180px) var(--pad);text-align:center}
+.estudio .q{width:34px;height:34px;margin:0 auto 34px;opacity:.45}
+.estudio .q svg{width:100%;height:100%;stroke:var(--blue-soft);fill:none;stroke-width:1.2}
+.estudio .big{font-family:var(--font-display);font-weight:300;
+  font-size:clamp(1.5rem,3.4vw,2.6rem);line-height:1.42;max-width:26ch;margin:0 auto 44px;
+  color:rgba(255,255,255,.92);letter-spacing:-.005em}
+.estudio .big em{font-style:italic;color:var(--blue-soft)}
+.estudio .by{display:flex;align-items:center;justify-content:center;gap:16px;color:var(--taupe)}
+.estudio .by .r{width:32px;height:1px;background:var(--hair-dark)}
+.estudio .by span{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase}
 
-.pf-hero{display:block;position:relative;overflow:hidden;border-radius:3px;margin-bottom:16px}
-.pf-hero picture,.pf-hero img{width:100%;height:clamp(340px,64vh,620px);object-fit:cover}
-.pf-hero img{transition:transform 1.4s var(--ease-out),filter .8s}
-@media(hover:hover){.pf-hero:hover img{transform:scale(1.045)}}
-.pf-hero .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,28,28,.72),transparent 52%);display:flex;align-items:flex-end;padding:clamp(20px,3vw,36px)}
-.pf-hero .ov .tag{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--blue-soft);font-weight:600}
-.pf-hero .ov h3{font-family:var(--font-display);font-weight:300;font-size:clamp(1.6rem,3.4vw,2.6rem);color:#fff;line-height:1.1;margin-top:8px}
-.pf-hero .ov .loc{color:rgba(241,240,236,.72);font-size:13.5px;margin-top:6px}
-.pf-hero .go{margin-left:auto;flex:none;align-self:flex-end;display:inline-flex;align-items:center;gap:8px;color:#fff;font-size:12px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:5px}
+/* ---------------- SERVIÇOS ---------------- */
+.wrapx{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.svc{padding:clamp(80px,12vh,130px) 0}
+.head-c{text-align:center;margin-bottom:clamp(46px,7vh,80px)}
+.head-c h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.8rem,4vw,2.7rem);
+  line-height:1.05;margin-bottom:14px}
+.head-c p{font-size:14.5px;color:var(--taupe)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:940px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.svc-grid{grid-template-columns:1fr}}
+.svc-card{background:rgba(247,246,242,.55);backdrop-filter:blur(4px);border:1px solid var(--hair);
+  padding:30px 26px;display:flex;flex-direction:column;
+  transition:background .5s var(--ease-out),transform .5s var(--ease-out)}
+.svc-card:hover{background:rgba(255,255,255,.85);transform:translateY(-3px)}
+.svc-card .n{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe);
+  font-weight:600;margin-bottom:10px}
+.svc-card h3{font-family:var(--font-display);font-weight:400;font-size:1.28rem;line-height:1.25;
+  margin-bottom:12px}
+.svc-card p{font-size:13.5px;color:var(--taupe);line-height:1.7}
+.svc-card.hi{background:var(--ink);border-color:var(--ink)}
+.svc-card.hi:hover{background:var(--umber-2)}
+.svc-card.hi .n{color:var(--blue-soft)}
+.svc-card.hi h3{color:var(--paper)}
+.svc-card.hi p{color:var(--taupe-light)}
 
-.pf-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:900px){.pf-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.pf-grid{grid-template-columns:1fr}}
-.pf-card{display:block;position:relative;overflow:hidden;border-radius:3px;background:var(--hair)}
-.pf-card picture,.pf-card img{width:100%;height:clamp(230px,34vh,320px);object-fit:cover}
-.pf-card img{transition:transform 1.3s var(--ease-out)}
-@media(hover:hover){.pf-card:hover img{transform:scale(1.06)}}
-.pf-card .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,28,28,.76),transparent 58%);display:flex;flex-direction:column;justify-content:flex-end;padding:18px}
-.pf-card .ov .tag{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--blue-soft);font-weight:600}
-.pf-card .ov h3{font-family:var(--font-display);font-weight:300;font-size:1.15rem;color:#fff;margin-top:5px;line-height:1.2}
-.pf-more{margin-top:40px;display:flex;justify-content:center}
+/* ---------------- PROJETOS (padrão "feature" da referência) ---------------- */
+.pj{padding:clamp(70px,10vh,110px) 0}
+.pj-head{display:flex;flex-direction:column;gap:22px;margin-bottom:clamp(40px,6vh,70px)}
+@media(min-width:768px){.pj-head{flex-direction:row;align-items:flex-end;justify-content:space-between;gap:32px}}
+.pj-head .eb{display:flex;align-items:center;gap:12px;color:var(--taupe);margin-bottom:14px}
+.pj-head .eb b{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500}
+.pj-head .eb .r{width:44px;height:1px;background:var(--taupe-light)}
+.pj-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.8rem,4.2vw,3rem);
+  line-height:1.02;letter-spacing:-.015em}
+.pj-head p{font-size:14px;color:var(--taupe);max-width:44ch;line-height:1.75}
+.pj-grid{display:grid;grid-template-columns:1fr;gap:32px}
+@media(min-width:768px){
+  .pj-grid{grid-template-columns:1fr 1fr;gap:clamp(32px,4vw,60px)}
+  .pj-grid > a:nth-child(2){margin-top:clamp(50px,9vw,96px)}
+}
+.pj-item{display:block}
+.pj-item .ph{aspect-ratio:4/5;overflow:hidden;margin-bottom:22px;box-shadow:0 12px 30px -10px rgba(28,28,28,.3)}
+.pj-item .ph picture{display:block;width:100%;height:100%}
+.pj-item .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
+@media(hover:hover){.pj-item:hover .ph img{transform:scale(1.05)}}
+.pj-item .tg{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);
+  font-weight:600;margin-bottom:7px;display:block}
+.pj-item h3{font-family:var(--font-display);font-weight:400;font-size:1.18rem;margin-bottom:9px;
+  transition:color .3s}
+.pj-item:hover h3{color:var(--blue)}
+.pj-item p{font-size:13.5px;color:var(--taupe);line-height:1.7;max-width:38ch}
+.pj-more{margin-top:clamp(50px,8vh,86px);display:flex;justify-content:center}
 
-/* quem assina */
-.assina-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,5vw,64px);align-items:center}
-.assina-portrait{overflow:hidden;border-radius:3px}
-.assina-portrait img{width:100%;aspect-ratio:1/1;object-fit:cover}
-.assina-body h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.8rem,3.6vw,2.7rem);line-height:1.08;margin:14px 0 22px}
-.assina-body p{color:var(--taupe);font-size:15.5px;line-height:1.78;max-width:50ch;margin-bottom:16px}
+/* ---------------- QUEM ASSINA ---------------- */
+.assina{padding:clamp(80px,12vh,140px) 0}
+.assina-grid{display:grid;grid-template-columns:1fr;gap:44px}
+@media(min-width:900px){.assina-grid{grid-template-columns:1.02fr .98fr;gap:clamp(40px,5vw,76px);align-items:center}}
+.assina-copy .eyebrow{color:var(--taupe)}
+.assina-copy h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.8rem,3.6vw,2.7rem);
+  line-height:1.06;margin:16px 0 22px;letter-spacing:-.012em}
+.assina-copy p{color:var(--taupe);font-size:15px;line-height:1.78;max-width:48ch;margin-bottom:15px}
 .assina-sign{margin-top:30px;padding-top:22px;border-top:1px solid var(--hair)}
-.assina-sign .sign{font-family:var(--font-display);font-size:1.3rem;font-weight:400}
-.assina-sign .role{font-size:12.5px;color:var(--taupe);letter-spacing:.05em;margin-top:4px}
-@media(max-width:820px){.assina-grid{grid-template-columns:1fr;gap:32px}}
+.assina-sign .sg{font-family:var(--font-display);font-size:1.28rem}
+.assina-sign .rl{font-size:12.5px;color:var(--taupe);margin-top:4px;letter-spacing:.04em}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.shots .sh{overflow:hidden;background:var(--hair);box-shadow:0 14px 34px -12px rgba(28,28,28,.32)}
+.shots .sh picture{display:block;width:100%;height:100%}
+.shots .sh img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease-out)}
+@media(hover:hover){.shots .sh:hover img{transform:scale(1.045)}}
+.shots .a{aspect-ratio:2/3}
+.shots .b{aspect-ratio:2/3;margin-top:34px}
+.shots .c{grid-column:1/-1;aspect-ratio:16/7}
+@media(max-width:600px){.shots{grid-template-columns:1fr}.shots .b{margin-top:0}}
+.shots-cap{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--taupe);
+  margin-top:12px;display:block}
+
+@media (prefers-reduced-motion:reduce){
+  .amb{animation:none}
+  .clip{clip-path:polygon(0% 0%,100% 0%,100% 100%,0% 100%)!important;transition:none}
+  .inner{transform:none!important;transition:none}
+  #el-text .ln i,#el-mark,#el-card,#el-card .desc,#el-card ul,#el-card .brand{
+    opacity:1!important;transform:none!important;transition:none}
+  #el-card .rule{transform:scaleX(1)!important}
+}
 </style>
 </head>
-<body>
+<body class="hm">
+<div class="amb" aria-hidden="true"></div>
+<div class="noise" aria-hidden="true"></div>
+
 <header class="top">
   <a class="mark" href="index.html" aria-label="Côncavo Arquitetura — início">
     <img class="sym" src="logo-sym.webp" alt="" width="101" height="84" />
@@ -147,126 +283,234 @@
 </div>
 
 <!-- HERO -->
-<section class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div>
-      <div class="hero-eyebrow"><span class="rule"></span><span class="eyebrow">Arquitetura · Interiores · Santos · SP</span></div>
-      <h1>Arquitetura que<br>abraça o<br><em>espaço.</em></h1>
-      <p class="lead">O formato côncavo se curva para dentro: acolhimento, proteção e envolvimento. Projetamos experiências que abraçam quem vive o espaço.</p>
-      <div class="hero-actions">
-        <a href="portfolio.html" class="btn btn-primary">Ver portfólio</a>
-        <a href="orcamento.html" class="btn btn-ghost">Peça seu orçamento</a>
+<header class="hero" id="top">
+  <div class="scene" id="scene">
+
+    <div class="el clip tr-down" id="el-tr">
+      <div class="inner">
+        <picture><source srcset="proj-cap-ferrat.webp" type="image/webp">
+          <img src="proj-cap-ferrat.jpg" alt="Suíte do Projeto Cap Ferrat" width="1200" height="930" loading="lazy" decoding="async"></picture>
+      </div><span class="veil"></span>
+    </div>
+
+    <div class="el clip" id="el-center">
+      <div class="inner">
+        <picture><source srcset="proj-sala-lareira.webp" type="image/webp">
+          <img src="proj-sala-lareira.jpg" alt="Sala com lareira em mármore verde e madeira" width="781" height="1200" decoding="async"></picture>
       </div>
     </div>
-    <div class="hero-visual">
-      <div class="scene" id="scene">
-        <div class="scene-glow"></div>
-        <div class="stage" id="stage"><div class="core"></div><div class="rim" id="rim"></div></div>
+
+    <div class="el clip" id="el-bl">
+      <div class="inner">
+        <picture><source srcset="proj-estacao-cafe.webp" type="image/webp">
+          <img src="proj-estacao-cafe.jpg" alt="Estação de café — marcenaria autoral" width="740" height="1200" loading="lazy" decoding="async"></picture>
       </div>
-      <div class="scene-cap"><span class="n">Côncavo</span><span class="l">arquitetura que abraça o espaço</span></div>
     </div>
+
+    <div class="el clip tr-side" id="el-mr">
+      <div class="inner">
+        <picture><source srcset="proj-castell-maria.webp" type="image/webp">
+          <img src="proj-castell-maria.jpg" alt="Cozinha integrada do Projeto Castell de Maria" width="1200" height="948" loading="lazy" decoding="async"></picture>
+      </div>
+    </div>
+
+    <div class="el clip" id="el-br">
+      <div class="inner">
+        <picture><source srcset="proj-cozinha-marmore.webp" type="image/webp">
+          <img src="proj-cozinha-marmore.jpg" alt="Cozinha em mármore Nero com marcenaria clara" width="700" height="1200" loading="lazy" decoding="async"></picture>
+      </div>
+    </div>
+
+    <div id="el-text">
+      <h1>
+        <span class="ln"><i>Arquitetura</i></span>
+        <span class="ln"><i>que abraça</i></span>
+        <span class="ln"><i><em>o espaço.</em></i></span>
+      </h1>
+      <p>
+        <span class="ln"><i>O formato côncavo se curva para dentro:</i></span>
+        <span class="ln"><i>acolhimento, proteção e envolvimento.</i></span>
+        <span class="ln"><i>Cada projeto começa por quem vai habitar.</i></span>
+      </p>
+    </div>
+
+    <div id="el-mark">
+      <img src="logo-sym.webp" alt="" width="101" height="84">
+      <span>Santos · SP</span>
+    </div>
+
+    <div id="el-card">
+      <div class="rule"></div>
+      <div class="head">
+        <div class="thumb clip">
+          <div class="inner">
+            <picture><source srcset="proj-lavabo-travertino.webp" type="image/webp">
+              <img src="proj-lavabo-travertino.jpg" alt="Lavabo em travertino" width="700" height="1200" loading="lazy" decoding="async"></picture>
+          </div>
+        </div>
+        <p class="desc">Ambientes de alto padrão desenhados a partir de quem vai habitar — não do catálogo.</p>
+      </div>
+      <ul>
+        <li>• Interiores e residencial</li>
+        <li>• Marcenaria sob medida</li>
+        <li>• Projeto 3D antes da obra</li>
+      </ul>
+      <div class="brand">
+        <img src="logo-sym.webp" alt="" width="101" height="84">
+        Côncavo
+      </div>
+    </div>
+
   </div>
-  <div class="wrap"><div class="hero-stats">
-    <div class="stat"><div class="v">Alto padrão</div><div class="k">mercado premium</div></div>
-    <div class="stat"><div class="v">Acolhimento</div><div class="k">espaços que abraçam</div></div>
-    <div class="stat"><div class="v">Técnica + beleza</div><div class="k">em harmonia</div></div>
-    <div class="stat"><div class="v">Atemporal</div><div class="k">projetos que duram</div></div>
-  </div></div>
-</section>
+</header>
 
 <!-- ESTÚDIO -->
-<section class="pad dark manifesto" id="estudio">
-  <div class="wrap">
-    <span class="eyebrow reveal">O estúdio</span>
-    <p class="big reveal">“Côncavo” é aquilo que se curva para dentro: <em>acolhimento, proteção e envolvimento.</em> Cada projeto começa por quem vai habitar.</p>
-    <div class="cols reveal">
-      <p>A Côncavo transforma cada projeto em uma experiência que vai muito além da estética — ambientes que não só impressionam, mas abraçam quem os vive, com conforto e funcionalidade em cada detalhe.</p>
-      <p>Com uma visão voltada para o alto padrão, é referência em arquitetura e interiores: a harmonia entre técnica, beleza e a vivência única de habitar.</p>
-    </div>
-  </div>
+<section class="estudio" id="estudio" data-dark>
+  <div class="q reveal"><svg viewBox="0 0 24 24"><path d="M9 7H5a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a3 3 0 0 1-3 3M20 7h-4a2 2 0 0 0-2 2v3a2 2 0 0 0 2 2h2v1a3 3 0 0 1-3 3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+  <p class="big reveal">“Côncavo” é aquilo que se curva para dentro: <em>acolhimento, proteção e envolvimento.</em> Ambientes que não só impressionam — abraçam quem os vive.</p>
+  <div class="by reveal"><span class="r"></span><span>O estúdio · alto padrão</span><span class="r"></span></div>
 </section>
 
 <!-- SERVIÇOS -->
-<section class="pad" id="servicos">
-  <div class="wrap">
-    <div class="sec-head reveal"><span class="idx">01</span><h2>O que o estúdio entrega</h2></div>
-    <div class="svc-list">
-      <div class="svc-row reveal"><span class="n">01</span><div><h3>Projeto de Interiores</h3></div><p>Ambientes autorais, do conceito ao detalhamento. Marcenaria, iluminação e materiais pensados como um só gesto.</p></div>
-      <div class="svc-row reveal"><span class="n">02</span><div><h3>Arquitetura Residencial</h3></div><p>Plantas redesenhadas a partir do uso real do espaço, integrando ambientes com inteligência e fluidez.</p></div>
-      <div class="svc-row reveal"><span class="n">03</span><div><h3>Reforma &amp; Redesign de Planta</h3></div><p>Ressignificar o espaço: reorganizar a planta para torná-la funcional no dia a dia e generosa quando a casa se abre para receber.</p></div>
-      <div class="svc-row reveal"><span class="n">04</span><div><h3>Marcenaria &amp; Detalhamento</h3></div><p>Projeto executivo sob medida — cada peça especificada com rigor para que o desenho vire obra sem ruído.</p></div>
-      <div class="svc-row reveal"><span class="n">05</span><div><h3>Projeto 3D &amp; Renderização</h3></div><p>Você vê o ambiente pronto antes da obra: imagens realistas que aprovam com segurança e zero surpresa.</p></div>
+<section class="svc" id="servicos">
+  <div class="wrapx">
+    <div class="head-c reveal">
+      <h2>O que o estúdio entrega</h2>
+      <p>Do partido ao detalhe construtivo — técnica e beleza como método.</p>
+    </div>
+    <div class="svc-grid">
+        <div class="svc-card reveal">
+          <span class="n">01</span>
+          <h3>Projeto de Interiores</h3>
+          <p>Ambientes autorais, do conceito ao detalhamento. Marcenaria, iluminação e materiais pensados como um só gesto.</p>
+        </div>
+        <div class="svc-card reveal">
+          <span class="n">02</span>
+          <h3>Arquitetura Residencial</h3>
+          <p>Plantas redesenhadas a partir do uso real do espaço, integrando ambientes com inteligência e fluidez.</p>
+        </div>
+        <div class="svc-card hi reveal">
+          <span class="n">03</span>
+          <h3>Reforma &amp; Redesign de Planta</h3>
+          <p>Reorganizar a planta para torná-la funcional no dia a dia e generosa quando a casa se abre para receber.</p>
+        </div>
+        <div class="svc-card reveal">
+          <span class="n">04</span>
+          <h3>Marcenaria &amp; Detalhamento</h3>
+          <p>Projeto executivo sob medida — cada peça especificada com rigor para que o desenho vire obra sem ruído.</p>
+        </div>
+        <div class="svc-card reveal">
+          <span class="n">05</span>
+          <h3>Projeto 3D &amp; Renderização</h3>
+          <p>Você vê o ambiente pronto antes da obra: imagens realistas que aprovam com segurança e zero surpresa.</p>
+        </div>
     </div>
   </div>
 </section>
 
 <!-- PROJETOS -->
-<section class="pad" id="projetos" style="padding-top:0">
-  <div class="wrap">
-    <div class="pf-head reveal">
-      <div class="l">
-        <span class="idx">02</span>
-        <h2>Projetos<br>selecionados</h2>
+<div id="projetos">
+  <section class="pj">
+    <div class="wrapx">
+      <div class="pj-head reveal">
+        <div>
+          <div class="eb"><b>Interiores</b><span class="r"></span></div>
+          <h2>Suítes<br>e living</h2>
+        </div>
+        <p>Cada ambiente começa pelo corpo em repouso: alturas, alcances e a luz que se aceita ao acordar. O desenho responde à rotina real de quem vive o espaço.</p>
       </div>
-      <p>Ambientes autorais de alto padrão. Abra um projeto para percorrê-lo por dentro.</p>
+      <div class="pj-grid">
+          <a class="pj-item reveal" href="projeto-cap-ferrat.html">
+            <div class="ph"><picture><source srcset="proj-cap-ferrat.webp" type="image/webp"><img src="proj-cap-ferrat.jpg" alt="Projeto Cap Ferrat" class="" width="1200" height="930" loading="lazy" decoding="async"></picture></div>
+            <span class="tg">Suíte · Residencial</span>
+            <h3>Projeto Cap Ferrat</h3>
+            <p>Uma suíte que se fecha para o mundo e se abre para quem dorme.</p>
+          </a>
+          <a class="pj-item reveal" href="projeto-sala-lareira.html">
+            <div class="ph"><picture><source srcset="proj-sala-lareira.webp" type="image/webp"><img src="proj-sala-lareira.jpg" alt="Sala com lareira" class="" width="781" height="1200" loading="lazy" decoding="async"></picture></div>
+            <span class="tg">Living</span>
+            <h3>Sala com lareira</h3>
+            <p>Mármore verde e madeira decidindo onde a casa se reúne.</p>
+          </a>
+      </div>
     </div>
-
-    <a class="pf-hero reveal" href="projeto-cap-ferrat.html">
-      <picture><source srcset="proj-cap-ferrat.webp" type="image/webp"><img src="proj-cap-ferrat.jpg" alt="Projeto Cap Ferrat" class="" width="1200" height="930" decoding="async" sizes="100vw"></picture>
-      <span class="ov">
-        <span>
-          <span class="tag">Suíte · Residencial</span>
-          <h3>Projeto Cap Ferrat</h3>
-          <span class="loc">Uma suíte que acolhe</span>
-        </span>
-        <span class="go">Percorrer <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      </span>
-    </a>
-
-    <div class="pf-grid">
-        <a class="pf-card reveal" href="projeto-estacao-cafe.html">
-          <picture><source srcset="proj-estacao-cafe.webp" type="image/webp"><img src="proj-estacao-cafe.jpg" alt="Estação de café" class="" width="740" height="1200" loading="lazy" decoding="async"></picture>
-          <span class="ov"><span class="tag">Marcenaria</span><h3>Estação de café</h3></span>
-        </a>
-        <a class="pf-card reveal" href="projeto-castell-maria.html">
-          <picture><source srcset="proj-castell-maria.webp" type="image/webp"><img src="proj-castell-maria.jpg" alt="Projeto Castell de Maria" class="" width="1200" height="948" loading="lazy" decoding="async"></picture>
-          <span class="ov"><span class="tag">Cozinha integrada</span><h3>Projeto Castell de Maria</h3></span>
-        </a>
-        <a class="pf-card reveal" href="projeto-sala-lareira.html">
-          <picture><source srcset="proj-sala-lareira.webp" type="image/webp"><img src="proj-sala-lareira.jpg" alt="Sala com lareira" class="" width="781" height="1200" loading="lazy" decoding="async"></picture>
-          <span class="ov"><span class="tag">Living</span><h3>Sala com lareira</h3></span>
-        </a>
-        <a class="pf-card reveal" href="projeto-suite-master.html">
-          <picture><source srcset="proj-suite-master.webp" type="image/webp"><img src="proj-suite-master.jpg" alt="Suíte master" class="" width="700" height="1200" loading="lazy" decoding="async"></picture>
-          <span class="ov"><span class="tag">Banho</span><h3>Suíte master</h3></span>
-        </a>
-        <a class="pf-card reveal" href="projeto-cozinha-marmore.html">
-          <picture><source srcset="proj-cozinha-marmore.webp" type="image/webp"><img src="proj-cozinha-marmore.jpg" alt="Cozinha em mármore" class="" width="700" height="1200" loading="lazy" decoding="async"></picture>
-          <span class="ov"><span class="tag">Cozinha</span><h3>Cozinha em mármore</h3></span>
-        </a>
-        <a class="pf-card reveal" href="projeto-lavabo-travertino.html">
-          <picture><source srcset="proj-lavabo-travertino.webp" type="image/webp"><img src="proj-lavabo-travertino.jpg" alt="Lavabo travertino" class="" width="700" height="1200" loading="lazy" decoding="async"></picture>
-          <span class="ov"><span class="tag">Lavabo</span><h3>Lavabo travertino</h3></span>
-        </a>
+  </section>
+  <section class="pj">
+    <div class="wrapx">
+      <div class="pj-head reveal">
+        <div>
+          <div class="eb"><b>Cozinhas</b><span class="r"></span></div>
+          <h2>Cozinha<br>integrada</h2>
+        </div>
+        <p>A cozinha deixa de ser um cômodo e vira o centro da casa. Integrar não é derrubar paredes — é desenhar o convívio.</p>
+      </div>
+      <div class="pj-grid">
+          <a class="pj-item reveal" href="projeto-castell-maria.html">
+            <div class="ph"><picture><source srcset="proj-castell-maria.webp" type="image/webp"><img src="proj-castell-maria.jpg" alt="Projeto Castell de Maria" class="" width="1200" height="948" loading="lazy" decoding="async"></picture></div>
+            <span class="tg">Cozinha integrada</span>
+            <h3>Projeto Castell de Maria</h3>
+            <p>A cozinha vira centro da casa — e a lavanderia some no desenho.</p>
+          </a>
+          <a class="pj-item reveal" href="projeto-cozinha-marmore.html">
+            <div class="ph"><picture><source srcset="proj-cozinha-marmore.webp" type="image/webp"><img src="proj-cozinha-marmore.jpg" alt="Cozinha em mármore" class="" width="700" height="1200" loading="lazy" decoding="async"></picture></div>
+            <span class="tg">Cozinha</span>
+            <h3>Cozinha em mármore</h3>
+            <p>Nero e marcenaria clara: contraste que não grita.</p>
+          </a>
+      </div>
     </div>
-
-    <div class="pf-more reveal"><a href="portfolio.html" class="btn btn-ghost">Ver o portfólio completo</a></div>
-  </div>
-</section>
+  </section>
+  <section class="pj">
+    <div class="wrapx">
+      <div class="pj-head reveal">
+        <div>
+          <div class="eb"><b>Marcenaria &amp; banho</b><span class="r"></span></div>
+          <h2>Detalhe<br>e matéria</h2>
+        </div>
+        <p>Marcenaria pensada como mobiliário de autor e superfícies que respondem à mão. É no detalhe que o projeto se prova.</p>
+      </div>
+      <div class="pj-grid">
+          <a class="pj-item reveal" href="projeto-estacao-cafe.html">
+            <div class="ph"><picture><source srcset="proj-estacao-cafe.webp" type="image/webp"><img src="proj-estacao-cafe.jpg" alt="Estação de café" class="" width="740" height="1200" loading="lazy" decoding="async"></picture></div>
+            <span class="tg">Marcenaria</span>
+            <h3>Estação de café</h3>
+            <p>Um nicho autoral para o gesto que abre o dia.</p>
+          </a>
+          <a class="pj-item reveal" href="projeto-suite-master.html">
+            <div class="ph"><picture><source srcset="proj-suite-master.webp" type="image/webp"><img src="proj-suite-master.jpg" alt="Suíte master" class="" width="700" height="1200" loading="lazy" decoding="async"></picture></div>
+            <span class="tg">Banho</span>
+            <h3>Suíte master</h3>
+            <p>Pedra de um lado, vidro do outro, luz atravessando os dois.</p>
+          </a>
+      </div>
+    </div>
+  </section>
+  <div class="pj-more reveal"><a href="portfolio.html" class="btn btn-primary">Ver o portfólio completo</a></div>
+</div>
 
 <!-- QUEM ASSINA -->
-<section class="pad" id="assina" style="padding-top:0">
-  <div class="wrap assina-grid">
-    <div class="assina-portrait reveal"><picture><source srcset="retrato-joao-vitor.webp" type="image/webp"><img src="retrato-joao-vitor.jpg" alt="João Vitor Coimbra Cardoso de Sá, arquiteto responsável pela Côncavo" class="" width="1100" height="1100" loading="lazy" decoding="async"></picture></div>
-    <div class="assina-body reveal">
-      <span class="eyebrow">04 · Quem assina</span>
+<section class="assina" id="assina">
+  <div class="wrapx assina-grid">
+    <div class="assina-copy reveal">
+      <span class="eyebrow">Quem assina</span>
       <h2>Arquitetura de autor,<br>do briefing às chaves.</h2>
       <p>O estúdio é conduzido por uma arquitetura de autor, voltada ao alto padrão: poucos projetos por vez, atenção integral a cada um. É assim que técnica e beleza deixam de ser promessa e viram método.</p>
       <p>Da primeira conversa à entrega das chaves, é o mesmo time que pensa, desenha e acompanha — porque a coerência de um projeto está em quem cuida dele do início ao fim.</p>
       <div class="assina-sign">
-        <div class="sign">Côncavo Arquitetura</div>
-        <div class="role">João Vitor Coimbra C. de Sá · CAU A3088768-SP</div>
+        <div class="sg">Côncavo Arquitetura</div>
+        <div class="rl">João Vitor Coimbra C. de Sá · CAU A3088768-SP</div>
       </div>
+    </div>
+    <div class="reveal">
+      <div class="shots">
+        <div class="sh a"><picture><source srcset="joao-retrato.webp" type="image/webp">
+          <img src="joao-retrato.jpg" alt="João Vitor Coimbra Cardoso de Sá, arquiteto responsável pela Côncavo" width="1000" height="1500" loading="lazy" decoding="async"></picture></div>
+        <div class="sh b"><picture><source srcset="joao-cadeira.webp" type="image/webp">
+          <img src="joao-cadeira.jpg" alt="João Vitor Coimbra Cardoso de Sá no estúdio" width="1000" height="1500" loading="lazy" decoding="async"></picture></div>
+        <div class="sh c"><picture><source srcset="retrato-joao-vitor.webp" type="image/webp">
+          <img src="retrato-joao-vitor.jpg" alt="Living assinado pela Côncavo Arquitetura" width="1100" height="1100" loading="lazy" decoding="async"></picture></div>
+      </div>
+      <span class="shots-cap">João Vitor Coimbra C. de Sá · Côncavo Arquitetura</span>
     </div>
   </div>
 </section>
@@ -341,40 +585,39 @@
 <script src="site.js" defer></script>
 <script>
 (function(){
-  var stage=document.getElementById('stage'), rim=document.getElementById('rim');
-  if(!stage) return;
-  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var lerp=function(a,b,t){return a+(b-a)*t;};
-  var N=18, step=-16;
-  for(var i=0;i<N;i++){
-    var t=i/(N-1), r=document.createElement('div'); r.className='ring';
-    r.style.setProperty('--s',(1-t*0.84).toFixed(3));
-    r.style.setProperty('--z',(i*step)+'px');
-    var cr=Math.round(lerp(150,96,t)),cg=Math.round(lerp(152,126,t)),cb=Math.round(lerp(150,154,t));
-    r.style.setProperty('--rc','rgba('+cr+','+cg+','+cb+','+(0.32+t*0.6).toFixed(2)+')');
-    if(t>0.55) r.style.boxShadow='0 0 '+(8+t*16).toFixed(0)+'px rgba(96,126,154,'+(t*0.5).toFixed(2)+')';
-    stage.insertBefore(r, stage.firstChild);
+  /* dispara a sequência de entrada do hero */
+  var go=function(){ document.body.classList.add('go'); };
+  if(document.readyState==='complete') requestAnimationFrame(go);
+  else addEventListener('load', function(){ requestAnimationFrame(go); });
+  setTimeout(go, 900); /* rede de segurança se alguma imagem demorar */
+
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  if(!matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+  if(innerWidth < 1024) return;
+
+  /* parallax de mouse na composição */
+  var scene=document.getElementById('scene');
+  if(!scene) return;
+  var map=[['el-center',-10],['el-tr',15],['el-bl',-15],['el-mr',20],['el-br',9]];
+  var els=map.map(function(m){
+    var e=document.getElementById(m[0]);
+    return e?{n:e.querySelector('.inner'),k:m[1],cx:0,cy:0}:null;
+  }).filter(Boolean);
+  var tx=0,ty=0,run=false;
+  scene.addEventListener('mousemove',function(e){
+    tx=(e.clientX/innerWidth-0.5)*2; ty=(e.clientY/innerHeight-0.5)*2;
+    if(!run){ run=true; requestAnimationFrame(frame); }
+  },{passive:true});
+  function frame(){
+    var moving=false;
+    els.forEach(function(o){
+      var dx=tx*o.k, dy=ty*o.k;
+      o.cx+=(dx-o.cx)*0.06; o.cy+=(dy-o.cy)*0.06;
+      if(Math.abs(dx-o.cx)>0.1||Math.abs(dy-o.cy)>0.1) moving=true;
+      o.n.style.transform='scale(1) translate3d('+o.cx.toFixed(2)+'px,'+o.cy.toFixed(2)+'px,0)';
+    });
+    if(moving) requestAnimationFrame(frame); else run=false;
   }
-  if(reduce) return;
-  var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
-  var trx=21,try_=-15,crx=21,cry=-15,sz=0,mx=50,my=38,cmx=50,cmy=38;
-  if(fine){
-    addEventListener('mousemove',function(e){
-      var nx=(e.clientX/innerWidth-0.5), ny=(e.clientY/innerHeight-0.5);
-      try_=-15+nx*26; trx=21-ny*16; mx=50+nx*40; my=38+ny*30;
-    },{passive:true});
-  }
-  (function frame(){
-    var sp=Math.min(1,Math.max(0,scrollY/(innerHeight*0.9)));
-    crx+=((trx+sp*14)-crx)*0.08; cry+=(try_-cry)*0.08; sz+=((-sp*240)-sz)*0.08;
-    stage.style.setProperty('--rx',crx.toFixed(2)+'deg');
-    stage.style.setProperty('--ry',cry.toFixed(2)+'deg');
-    stage.style.setProperty('--sz',sz.toFixed(1)+'px');
-    stage.style.opacity=(1-sp*0.45).toFixed(2);
-    if(rim){cmx+=(mx-cmx)*0.08; cmy+=(my-cmy)*0.08;
-      rim.style.setProperty('--mx',cmx.toFixed(1)+'%'); rim.style.setProperty('--my',cmy.toFixed(1)+'%');}
-    requestAnimationFrame(frame);
-  })();
 })();
 </script>
 </body>
