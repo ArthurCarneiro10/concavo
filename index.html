@@ -169,30 +169,25 @@ body.hm{background:var(--paper);position:relative}
 .estudio .by .r{width:32px;height:1px;background:var(--hair-dark)}
 .estudio .by span{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase}
 
-/* ---------------- SERVIÇOS ---------------- */
+/* ---------------- SERVIÇOS (design anterior: lista numerada) ---------------- */
 .wrapx{max-width:1240px;margin:0 auto;padding:0 var(--pad)}
 .svc{padding:clamp(80px,12vh,130px) 0}
-.head-c{text-align:center;margin-bottom:clamp(46px,7vh,80px)}
-.head-c h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.8rem,4vw,2.7rem);
-  line-height:1.05;margin-bottom:14px}
-.head-c p{font-size:14.5px;color:var(--taupe)}
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-@media(max-width:940px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.svc-grid{grid-template-columns:1fr}}
-.svc-card{background:rgba(247,246,242,.55);backdrop-filter:blur(4px);border:1px solid var(--hair);
-  padding:30px 26px;display:flex;flex-direction:column;
-  transition:background .5s var(--ease-out),transform .5s var(--ease-out)}
-.svc-card:hover{background:rgba(255,255,255,.85);transform:translateY(-3px)}
-.svc-card .n{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe);
-  font-weight:600;margin-bottom:10px}
-.svc-card h3{font-family:var(--font-display);font-weight:400;font-size:1.28rem;line-height:1.25;
-  margin-bottom:12px}
-.svc-card p{font-size:13.5px;color:var(--taupe);line-height:1.7}
-.svc-card.hi{background:var(--ink);border-color:var(--ink)}
-.svc-card.hi:hover{background:var(--umber-2)}
-.svc-card.hi .n{color:var(--blue-soft)}
-.svc-card.hi h3{color:var(--paper)}
-.svc-card.hi p{color:var(--taupe-light)}
+.sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:52px}
+.sec-head h2{font-family:var(--font-display);font-weight:300;font-size:clamp(1.9rem,4.2vw,3.1rem);
+  line-height:1.06;letter-spacing:-.01em}
+.svc-list{border-top:1px solid var(--hair)}
+.svc-row{display:grid;grid-template-columns:64px 1fr;gap:6px 30px;padding:30px 0;
+  border-bottom:1px solid var(--hair);transition:padding-left .45s var(--ease-out)}
+.svc-row .n{font-family:var(--font-display);font-size:13px;color:var(--blue);padding-top:9px}
+.svc-row h3{font-family:var(--font-display);font-weight:400;font-size:clamp(1.15rem,2.1vw,1.5rem);line-height:1.3}
+/* o <p> é o 3º filho: sem isto ele cai na coluna de 64px e o texto
+   fica espremido num fio vertical no celular */
+.svc-row p{grid-column:2;color:var(--taupe);font-size:14.5px;line-height:1.7;max-width:52ch}
+@media(hover:hover){.svc-row:hover{padding-left:14px}}
+@media(min-width:860px){
+  .svc-row{grid-template-columns:64px .85fr 1.15fr;align-items:start}
+  .svc-row p{grid-column:3;padding-top:5px}
+}
 
 /* ---------------- PORTFÓLIO (design anterior: destaque + grade) ---------------- */
 .pf{padding:clamp(80px,12vh,130px) 0}
@@ -376,36 +371,13 @@ body.hm{background:var(--paper);position:relative}
 <!-- SERVIÇOS -->
 <section class="svc" id="servicos">
   <div class="wrapx">
-    <div class="head-c reveal">
-      <h2>O que o estúdio entrega</h2>
-      <p>Do partido ao detalhe construtivo — técnica e beleza como método.</p>
-    </div>
-    <div class="svc-grid">
-        <div class="svc-card reveal">
-          <span class="n">01</span>
-          <h3>Projeto de Interiores</h3>
-          <p>Ambientes autorais, do conceito ao detalhamento. Marcenaria, iluminação e materiais pensados como um só gesto.</p>
-        </div>
-        <div class="svc-card reveal">
-          <span class="n">02</span>
-          <h3>Arquitetura Residencial</h3>
-          <p>Plantas redesenhadas a partir do uso real do espaço, integrando ambientes com inteligência e fluidez.</p>
-        </div>
-        <div class="svc-card hi reveal">
-          <span class="n">03</span>
-          <h3>Reforma &amp; Redesign de Planta</h3>
-          <p>Reorganizar a planta para torná-la funcional no dia a dia e generosa quando a casa se abre para receber.</p>
-        </div>
-        <div class="svc-card reveal">
-          <span class="n">04</span>
-          <h3>Marcenaria &amp; Detalhamento</h3>
-          <p>Projeto executivo sob medida — cada peça especificada com rigor para que o desenho vire obra sem ruído.</p>
-        </div>
-        <div class="svc-card reveal">
-          <span class="n">05</span>
-          <h3>Projeto 3D &amp; Renderização</h3>
-          <p>Você vê o ambiente pronto antes da obra: imagens realistas que aprovam com segurança e zero surpresa.</p>
-        </div>
+    <div class="sec-head reveal"><h2>O que o estúdio entrega</h2></div>
+    <div class="svc-list">
+      <div class="svc-row reveal"><span class="n">01</span><div><h3>Projeto de Interiores</h3></div><p>Ambientes autorais, do conceito ao detalhamento. Marcenaria, iluminação e materiais pensados como um só gesto.</p></div>
+      <div class="svc-row reveal"><span class="n">02</span><div><h3>Arquitetura Residencial</h3></div><p>Plantas redesenhadas a partir do uso real do espaço, integrando ambientes com inteligência e fluidez.</p></div>
+      <div class="svc-row reveal"><span class="n">03</span><div><h3>Reforma &amp; Redesign de Planta</h3></div><p>Ressignificar o espaço: reorganizar a planta para torná-la funcional no dia a dia e generosa quando a casa se abre para receber.</p></div>
+      <div class="svc-row reveal"><span class="n">04</span><div><h3>Marcenaria &amp; Detalhamento</h3></div><p>Projeto executivo sob medida — cada peça especificada com rigor para que o desenho vire obra sem ruído.</p></div>
+      <div class="svc-row reveal"><span class="n">05</span><div><h3>Projeto 3D &amp; Renderização</h3></div><p>Você vê o ambiente pronto antes da obra: imagens realistas que aprovam com segurança e zero surpresa.</p></div>
     </div>
   </div>
 </section>
