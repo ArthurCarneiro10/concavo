@@ -7,15 +7,15 @@
 <meta name="description" content="Escritório de arquitetura e interiores de alto padrão em Santos/SP. Projeto de interiores, arquitetura residencial, reforma, marcenaria e renderização 3D." />
 <meta name="author" content="Côncavo Arquitetura" />
 <meta name="theme-color" content="#F1F0EC" />
-<link rel="canonical" href="https://concavoarquitetura.com/index.html" />
+<link rel="canonical" href="https://concavoarquitetura.com.br/" />
 <link rel="icon" type="image/png" href="logo-sym.png">
 <meta property="og:type" content="website" />
 <meta property="og:locale" content="pt_BR" />
 <meta property="og:site_name" content="Côncavo Arquitetura" />
 <meta property="og:title" content="Côncavo Arquitetura — Arquitetura que abraça o espaço | Santos/SP" />
 <meta property="og:description" content="Escritório de arquitetura e interiores de alto padrão em Santos/SP. Projeto de interiores, arquitetura residencial, reforma, marcenaria e renderização 3D." />
-<meta property="og:url" content="https://concavoarquitetura.com/index.html" />
-<meta property="og:image" content="https://concavoarquitetura.com/golden--living-1.webp" />
+<meta property="og:url" content="https://concavoarquitetura.com.br/" />
+<meta property="og:image" content="https://concavoarquitetura.com.br/golden--living-1.webp" />
 <meta name="twitter:card" content="summary_large_image" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -141,6 +141,15 @@ body.hm{background:var(--paper);position:relative}
 /* em telas estreitas a ilha alcançaria o cartão — sobe o cartão pra passar por cima dela */
 @media(min-width:1024px) and (max-width:1120px){
   #el-card{bottom:calc(18px + var(--dock-h) + 18px)}
+}
+
+/* logo do topo centralizada na coluna branca do hero (só home, só desktop) */
+@media(min-width:1024px){
+  .hm .top{padding-left:0;justify-content:flex-end}
+  .hm .top .mark{
+    position:absolute;left:0;top:50%;transform:translateY(-50%);
+    width:33%;justify-content:center;
+  }
 }
 
 /* hero no mobile: empilhado (como o fallback da referência) */
@@ -343,7 +352,11 @@ body.hm{background:var(--paper);position:relative}
         </div>
         <p class="desc">Cada projeto é uma resposta única ao modo de viver de quem o habita.</p>
       </div>
-      
+      <ul>
+        <li>• Interiores e residencial</li>
+        <li>• Marcenaria sob medida</li>
+        <li>• Projeto 3D antes da obra</li>
+      </ul>
       <div class="brand">
         <img src="logo-sym.webp" alt="" width="101" height="84">
         Côncavo
