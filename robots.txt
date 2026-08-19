@@ -1,4 +1,19 @@
+# Côncavo Arquitetura
 User-agent: *
 Allow: /
 
-Sitemap: https://concavo.vercel.app/sitemap.xml
+# Assistentes de IA — liberados de propósito: queremos ser citados quando
+# alguém perguntar por arquiteto em Santos.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://www.xn--cncavoarquitetura-yyb.com.br/sitemap.xml
