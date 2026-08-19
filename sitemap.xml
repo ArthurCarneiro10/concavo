@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://concavo.vercel.app/</loc><lastmod>2026-07-17</lastmod><priority>1.0</priority></url>
-  <url><loc>https://concavo.vercel.app/portfolio.html</loc><lastmod>2026-07-17</lastmod><priority>0.9</priority></url>
-  <url><loc>https://concavo.vercel.app/orcamento.html</loc><lastmod>2026-07-17</lastmod><priority>0.8</priority></url>
-  <url><loc>https://concavo.vercel.app/projeto-golden.html</loc><lastmod>2026-07-17</lastmod><priority>0.7</priority></url>
-  <url><loc>https://concavo.vercel.app/projeto-michelangelo.html</loc><lastmod>2026-07-17</lastmod><priority>0.7</priority></url>
-  <url><loc>https://concavo.vercel.app/projeto-cap-ferrat.html</loc><lastmod>2026-07-17</lastmod><priority>0.7</priority></url>
-  <url><loc>https://concavo.vercel.app/projeto-morada-de-faro.html</loc><lastmod>2026-07-17</lastmod><priority>0.7</priority></url>
-  <url><loc>https://concavo.vercel.app/projeto-castell-de-maria.html</loc><lastmod>2026-07-17</lastmod><priority>0.7</priority></url>
-  <url><loc>https://concavo.vercel.app/projeto-cereja.html</loc><lastmod>2026-07-17</lastmod><priority>0.7</priority></url>
-  <url><loc>https://concavo.vercel.app/projeto-aruba.html</loc><lastmod>2026-07-17</lastmod><priority>0.7</priority></url>
-  <url><loc>https://concavo.vercel.app/projeto-studio-embare.html</loc><lastmod>2026-07-17</lastmod><priority>0.7</priority></url>
-  <url><loc>https://concavo.vercel.app/projeto-kids-barcelona.html</loc><lastmod>2026-07-17</lastmod><priority>0.7</priority></url>
-  <url><loc>https://concavo.vercel.app/projeto-loft.html</loc><lastmod>2026-07-17</lastmod><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/portfolio.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/orcamento.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-aruba.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-cap-ferrat.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-castell-de-maria.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-cereja.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-cozinha-marmore.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-estacao-cafe.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-golden.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-kids-barcelona.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-lavabo-travertino.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-loft.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-michelangelo.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-morada-de-faro.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-sala-lareira.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-studio-embare.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.xn--cncavoarquitetura-yyb.com.br/projeto-suite-master.html</loc><lastmod>2026-08-18</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
